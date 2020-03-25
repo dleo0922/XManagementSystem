@@ -6,8 +6,7 @@ public class MenuManager { //menu manager 클래스를 만든다.
 		int num = 5;
 		
 		while(num != 6 ) { //num이 6이 아닌 동안 반복된다.
-			System.out.println("*** Steam Game Management Menu ***"); //메뉴를 소개한다.
-			
+			System.out.println("*** Steam Game Management Menu ***"); //메뉴를 소개한다.		
 			System.out.println("1. Add game"); //게임을 추가한다.
 			System.out.println("2. Delet game"); //게임을 삭제한다.
 			System.out.println("3. Edit game"); //게임을 수정한다.
@@ -19,11 +18,9 @@ public class MenuManager { //menu manager 클래스를 만든다.
 			if (num == 1) { //num이 1,2,3,4 정수일 때 각 함수를 실행한다.
 				addGame(); 
 			}
-			
 			else if (num == 2) {
 				deletGame();
-			}
-			
+			}			
 			else if (num == 3) {
 				editGame();
 			}
@@ -49,23 +46,19 @@ public class MenuManager { //menu manager 클래스를 만든다.
 		System.out.println(gameEmail); //입력받은 email을 출력한다.
 		
 		System.out.print("Phone number:");
-		String gamePhone = input.next();
-		
-
+		String gamePhone = input.next();	
 	}
 	
 	public static void deletGame() { //Game Id를 입력받는다.
 		Scanner input = new Scanner(System.in);
 		System.out.print("Game ID:");
 		int gameId = input.nextInt();
-
 	}
 
 	public static void editGame() { //Game Id를 입력받는다.
 		Scanner input = new Scanner(System.in);
 		System.out.print("Game ID:");
 		int gameId = input.nextInt();
-
 	}
 	
 	public static void viewGame() { //Game Id를 입력받는다.
