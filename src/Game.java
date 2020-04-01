@@ -4,7 +4,7 @@ public class Game{
 	String name;
 	int id;
 	String email;
-	String phone;
+	String password;
 	
 	public Game() {	//생성자를 만든다.
 	}
@@ -15,16 +15,16 @@ public class Game{
 	}
 	
 	
-	public Game (String name, int id, String email, String phone){ //생성자를 만든다.
+	public Game (String name, int id, String email, String password){ //생성자를 만든다.
 		super();
 		this.name = name;
 		this.id = id;
 		this.email = email;
-		this.phone = phone;
+		this.password = password;
 	}
 	
 	public void printInfo() { //정보를 모두 출력하는 메소드를 만든다.
-		System.out.println("name:" + name + " id:" +id+ " email:" +email+ " phone:" +phone );
+		System.out.println("name:" + name + " id:" +id+ " email:" +email+ " password:" +password );
 	}
 	
 }
