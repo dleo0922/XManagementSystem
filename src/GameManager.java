@@ -42,12 +42,12 @@ public class GameManager {
 		int gameId = input.nextInt();
 		if(game.id == gameId) {
 			int num = -1;	
-			while(num != 5 ) { //num이 6이 아닌 동안 반복된다.
+			while(num != 5 ) { //num이 5이 아닌 동안 반복된다.
 				System.out.println("** Steam Game Info Edit Menu **"); //메뉴를 소개한다.		
-				System.out.println("1. Edit Id"); //게임을 추가한다.
-				System.out.println("2. Edit Name"); //게임을 삭제한다.
-				System.out.println("3. Edit Email"); //게임을 수정한다.
-				System.out.println("4. Edit Phone"); //게임을 본다.
+				System.out.println("1. Edit Id"); //Id를 수정한다.
+				System.out.println("2. Edit Name"); //이름을 수정한다.
+				System.out.println("3. Edit Email"); //이메일을 수정한다.
+				System.out.println("4. Edit Phone"); //휴대폰을 수정한다.
 				System.out.println("5. Exit"); //프로그램을 끈다.
 				System.out.println("Select one number between 1 - 5:"); //번호 5개 중 하나를 고르게 한다.
 				num = input.nextInt(); //숫자 num을 입력받는다.
@@ -78,7 +78,7 @@ public class GameManager {
 		System.out.print("Game ID:");
 		int gameId = input.nextInt();
 		if(game.id == gameId) {
-			game.printInfo();
+			game.printInfo(); //해당 Id의 모든 정보를 출력한다.
 		}
 	}
 
