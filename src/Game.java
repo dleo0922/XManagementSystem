@@ -5,7 +5,7 @@ public class Game{
 	int id;
 	String email;
 	String password;
-	static int numGamesRegistered = 0;
+	static int numGamesRegistered = 0; //어디서든 접근 가능한 static변수를 선언한다.
 	
 	public Game() {	//생성자를 만든다.
 		numGamesRegistered++;

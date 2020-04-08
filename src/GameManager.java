@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameManager {
-	ArrayList<Game> games = new ArrayList<Game>();
+	ArrayList<Game> games = new ArrayList<Game>(); //ArrayList로 games 배열 선언
 	Scanner input;
 	
 	GameManager(Scanner input){
@@ -33,10 +33,10 @@ public class GameManager {
 			if(games.get(i).id == gameId) {
 				index = i;
 				break;
-			}			
+			}			//i로 인덱스를 찾으며 일치하는 것이 있다면 인덱스 변수에 i를 넣는다.
 		}
 		
-		if (index>=0) {
+		if (index>=0) { //인덱스가 0보다 크면 일치하는 게 있다는 말이므로 인덱스 번호의 game 정보가 삭제된다.
 			games.remove(index);
 			Game.numGamesRegistered--;
 			System.out.println("the game"+ gameId +" is deleted");
