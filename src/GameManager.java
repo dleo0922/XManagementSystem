@@ -1,44 +1,57 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import game.Game;
+import game.HorrorGame;
+
 public class GameManager {
 	ArrayList<Game> games = new ArrayList<Game>(); //ArrayList로 games 배열 선언
-	Scanner input;
-	
+	Scanner input;	
 	GameManager(Scanner input){
 		this.input = input;
 	}
-	
-	public void addGame() { //Game ID, name, E address, password를 입력받는다.
-		Game game = new Game();
-		System.out.print("Game ID:");
-		game.id = input.nextInt();
-		
-		System.out.print("Game name:");
-		game.name = input.next();
-		
-		System.out.print("Email address:");
-		game.email = input.next();
-		
-		System.out.print("password:");
-		game.password = input.next();	
-		games.add(game);
+
+	public void addGame() { //Game ID, name, E address, password를 입력받는다.		
+		int kind = 0;
+		Game game;
+		while (kind != 1 && kind !=2) {
+			System.out.print("1 for Role-Playing game");
+			System.out.print("2 for Horror game");
+			System.out.print("Select num for Game Kind between 1 and 2:");
+			kind = input.nextInt();	
+			if (kind == 1) {
+				game = new Game();			
+				game.getUserInput(input);
+				games.add(game);
+				break;
+			}
+			else if (kind == 2) {
+				game = new HorrorGame();
+				game.getUserInput(input);
+				games.add(game);
+				break;
+			}
+			else {
+				System.out.print("Select num for Game Kind between 1 and 2:");
+			}
+		}
+
+
 	}
-	
+
 	public void deletGame() { //Game Id를 입력받는다.		
 		System.out.print("Game ID:");
 		int gameId = input.nextInt();
 		int index = -1;
 		for (int i = 0; i<games.size(); i++) {
-			if(games.get(i).id == gameId) {
+			if(games.get(i).getId() == gameId) {
 				index = i;
 				break;
 			}			//i로 인덱스를 찾으며 일치하는 것이 있다면 인덱스 변수에 i를 넣는다.
 		}
-		
+
 		if (index>=0) { //인덱스가 0보다 크면 일치하는 게 있다는 말이므로 인덱스 번호의 game 정보가 삭제된다.
 			games.remove(index);
-			Game.numGamesRegistered--;
 			System.out.println("the game"+ gameId +" is deleted");
 		}
 		else {
@@ -52,7 +65,7 @@ public class GameManager {
 		int gameId = input.nextInt();
 		for (int i = 0; i<games.size(); i++) {
 			Game game = games.get(i);
-			if(game.id == gameId) {
+			if(game.getId() == gameId) {
 				int num = -1;	
 				while(num != 5 ) { //num이 5이 아닌 동안 반복된다.
 					System.out.println("** Steam Game Info Edit Menu **"); //메뉴를 소개한다.		
@@ -65,19 +78,23 @@ public class GameManager {
 					num = input.nextInt(); //숫자 num을 입력받는다.
 					if (num == 1) { //num이 1,2,3,4 정수일 때 각 함수를 실행한다.
 						System.out.print("Game ID:");
-						game.id = input.nextInt();
+						int id = input.nextInt();
+						game.setId(id);
 					}
 					else if (num == 2) {
 						System.out.print("Game name:");
-						game.name = input.next();
+						String name = input.next();
+						game.setName(name);
 					}			
 					else if (num == 3) {
 						System.out.print("Email address:");
-						game.email = input.next();
+						String email = input.next();
+						game.setEmail(email);
 					}
 					else if (num == 4) {
 						System.out.print("password:");
-						game.password = input.next();	
+						String password = input.next();
+						game.setPassword(password);
 					}
 					else { //5나 그 외의 숫자일 때 while로 menu 출력부터 다시 시작된다.
 						continue;
@@ -87,11 +104,11 @@ public class GameManager {
 			}//if
 		}//for
 	}
-	
+
 	public void viewGames() { //Game Id를 입력받는다.
-//		System.out.print("Game ID:");
-//		int gameId = input.nextInt();
-		System.out.println("# of registered games:" + Game.numGamesRegistered);
+		//System.out.print("Game ID:");
+		//int gameId = input.nextInt();
+		System.out.println("# of registered games:" + games.size());
 		for (int i = 0; i<games.size(); i++) {
 			games.get(i).printInfo(); //해당 Id의 모든 정보를 출력한다.
 		}
