@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import game.Game;
+import game.GameKind;
 import game.HorrorGame;
+import game.ShootingGame;
 
 public class GameManager {
 	ArrayList<Game> games = new ArrayList<Game>(); //ArrayList로 games 배열 선언
@@ -15,18 +17,25 @@ public class GameManager {
 		int kind = 0;
 		Game game;
 		while (kind != 1 && kind !=2) {
-			System.out.print("1 for Role-Playing game");
-			System.out.print("2 for Horror game");
-			System.out.print("Select num for Game Kind between 1 and 2:");
+			System.out.println("1 for Role-Playing game");
+			System.out.println("2 for Horror game");
+			System.out.println("3 for Shooting game");
+			System.out.print("Select num 1, 2 or 3 for Game Kind:");
 			kind = input.nextInt();	
 			if (kind == 1) {
-				game = new Game();			
+				game = new Game(GameKind.RolePlaying);			
 				game.getUserInput(input);
 				games.add(game);
 				break;
 			}
 			else if (kind == 2) {
-				game = new HorrorGame();
+				game = new HorrorGame(GameKind.Horror);
+				game.getUserInput(input);
+				games.add(game);
+				break;
+			}
+			else if (kind == 3) {
+				game = new ShootingGame(GameKind.Shooting);
 				game.getUserInput(input);
 				games.add(game);
 				break;
