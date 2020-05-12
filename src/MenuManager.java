@@ -1,28 +1,43 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuManager { //menu manager 클래스를 만든다.
 	public static void main(String[] args) {	
 		Scanner input = new Scanner(System.in);
 		GameManager gameManager = new GameManager(input);
+
+		selectMenu(input, gameManager);
+	}
+
+	public static void selectMenu(Scanner input, GameManager gameManager) {
 		int num = -1;	
 		while(num != 5 ) { //num이 5가 아닌 동안 반복된다.
-			showMenu();
-			num = input.nextInt(); //숫자 num을 입력받는다.
-			switch(num) {
-			case 1:
-				gameManager.addGame(); 
-				break;
-			case 2:
-				gameManager.deletGame();
-				break;
-			case 3:
-				gameManager.editGame();
-				break;
-			case 4:
-				gameManager.viewGames();
-				break;
-			default:
-				continue;
+			try {
+				showMenu();
+				num = input.nextInt(); //숫자 num을 입력받는다.
+				switch(num) {
+				case 1:
+					gameManager.addGame(); 
+					break;
+				case 2:
+					gameManager.deletGame();
+					break;
+				case 3:
+					gameManager.editGame();
+					break;
+				case 4:
+					gameManager.viewGames();
+					break;
+				default:
+					continue;
+				}
+			}
+			catch(InputMismatchException e) { //try 와 catch로 에러를 잡아낸다
+				System.out.println("Please put an integer between 1 and 5!");
+				if (input.hasNext()) {
+					input.next();
+				}
+				num=-1;
 			}
 		}
 	}

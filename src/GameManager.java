@@ -1,6 +1,6 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import game.Game;
 import game.GameInput;
 import game.GameKind;
@@ -18,36 +18,43 @@ public class GameManager {
 	public void addGame() { //Game ID, name, E address, password를 입력받는다.		
 		int kind = 0;
 		GameInput gameInput;
-		while (kind != 1 && kind !=2) {
-			System.out.println("1 for Role-Playing game");
-			System.out.println("2 for Horror game");
-			System.out.println("3 for Shooting game");
-			System.out.print("Select num 1, 2 or 3 for Game Kind:");
-			kind = input.nextInt();	
-			if (kind == 1) {
-				gameInput = new RolePlayingGame(GameKind.RolePlaying);			
-				gameInput.getUserInput(input);
-				games.add(gameInput);
-				break;
+		while (kind < 1 || kind >3) {
+			try {
+				System.out.println("1 for Role-Playing game");
+				System.out.println("2 for Horror game");
+				System.out.println("3 for Shooting game");
+				System.out.print("Select num 1, 2 or 3 for Game Kind:");
+				kind = input.nextInt();	
+				if (kind == 1) {
+					gameInput = new RolePlayingGame(GameKind.RolePlaying);			
+					gameInput.getUserInput(input);
+					games.add(gameInput);
+					break;
+				}
+				else if (kind == 2) {
+					gameInput = new HorrorGame(GameKind.Horror);
+					gameInput.getUserInput(input);
+					games.add(gameInput);
+					break;
+				}
+				else if (kind == 3) {
+					gameInput = new ShootingGame(GameKind.Shooting);
+					gameInput.getUserInput(input);
+					games.add(gameInput);
+					break;
+				}
+				else {
+					System.out.print("Select num for Game Kind between 1 and 2:");
+				}
 			}
-			else if (kind == 2) {
-				gameInput = new HorrorGame(GameKind.Horror);
-				gameInput.getUserInput(input);
-				games.add(gameInput);
-				break;
-			}
-			else if (kind == 3) {
-				gameInput = new ShootingGame(GameKind.Shooting);
-				gameInput.getUserInput(input);
-				games.add(gameInput);
-				break;
-			}
-			else {
-				System.out.print("Select num for Game Kind between 1 and 2:");
+			catch(InputMismatchException e) { //try와 catch를 사용한 exception 코드
+				System.out.println("Please put an integer between 1 and 3!");
+				if (input.hasNext()) {
+					input.next();
+				}
+				kind=-1;
 			}
 		}
-
-
 	}
 
 	public void deletGame() { //Game Id를 입력받는다.		
@@ -118,9 +125,6 @@ public class GameManager {
 			games.get(i).printInfo(); //해당 Id의 모든 정보를 출력한다.
 		}
 	}
-
-
-
 	public void showEditMenu() {
 		System.out.println("** Steam Game Info Edit Menu **"); //메뉴를 소개한다.		
 		System.out.println("1. Edit Id"); //Id를 수정한다.

@@ -2,6 +2,8 @@ package game;
 
 import java.util.Scanner;
 
+import exception.EmailFormatException;
+
 public abstract class Game implements GameInput{
 	protected GameKind kind = GameKind.RolePlaying;
 	protected String name;
@@ -66,7 +68,10 @@ public abstract class Game implements GameInput{
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) throws EmailFormatException { //에러 발생시 EmailFormatException 클래스로 보내어 에러 처리를 한다
+		if (!email.contains("@") && !email.equals("")) {
+			throw new EmailFormatException();
+		}
 		this.email = email;
 	}
 
@@ -94,9 +99,16 @@ public abstract class Game implements GameInput{
 	}
 
 	public void setGameEmail (Scanner input) {
-		System.out.print("Email address:");
-		String email = input.next();
-		this.setEmail(email);
+		String email = "";
+		while (!email.contains("@")) {
+			System.out.print("Email address:");
+			email = input.next();
+			try {
+				this.setEmail(email);
+			} catch (EmailFormatException e) {
+				System.out.println("Incorrect Email Format. put the e-mail address that contains @");
+			}
+		}
 	}
 
 	public void setGamePassword(Scanner input) {

@@ -2,6 +2,8 @@ package game;
 
 import java.util.Scanner;
 
+import exception.EmailFormatException;
+
 public class ShootingGame extends TeenageGame {
 
 	protected String ParentEmail;
@@ -25,15 +27,20 @@ public class ShootingGame extends TeenageGame {
 		{
 			System.out.print("Do you have a parent's email address? (Y/N)"); 
 			answer = input.next().charAt(0);
-			if(answer == 'y' || answer == 'Y') {
-				setGameEmail(input);
-				break;
+			try {
+				if(answer == 'y' || answer == 'Y') {
+					setGameEmail(input);
+					break;
+				}
+				else if (answer == 'n' || answer == 'N') {
+					this.setEmail("");
+					break;
+				}
+				else {
+				}
 			}
-			else if (answer == 'n' || answer == 'N') {
-				this.setEmail("");
-				break;
-			}
-			else {
+			catch(EmailFormatException e) { //try 와 catch로 에러 발생을 알린다
+				System.out.println("Incorrect Email Format. put the e-mail address that contains @");
 			}
 		}
 	}

@@ -2,6 +2,8 @@ package game;
 
 import java.util.Scanner;
 
+import exception.EmailFormatException;
+
 public interface GameInput {
 	
 	public int getId();
@@ -10,7 +12,7 @@ public interface GameInput {
 	
 	public void setName(String name);
 	
-	public void setEmail(String email);
+	public void setEmail(String email) throws EmailFormatException;
 	
 	public void setPassword(String password);
 
