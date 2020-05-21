@@ -1,16 +1,21 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import game.Game;
+
 import game.GameInput;
 import game.GameKind;
 import game.HorrorGame;
 import game.RolePlayingGame;
 import game.ShootingGame;
 
-public class GameManager {
+public class GameManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5063511788303843413L; //직렬화 때 저장하여 역직렬화시 동일한지 체크
 	ArrayList<GameInput> games = new ArrayList<GameInput>(); //ArrayList로 games 배열 선언
-	Scanner input;	
+	transient Scanner input;	
 	GameManager(Scanner input){
 		this.input = input;
 	}
@@ -134,5 +139,9 @@ public class GameManager {
 		System.out.println("5. Exit"); //프로그램을 끈다.
 		System.out.println("Select one number between 1 - 5:"); //번호 5개 중 하나를 고르게 한다.
 	}
+	
+    public void setScanner(Scanner input) { //Scanner 메소드 추가
+        this.input = input;
+    }
 
 }

@@ -1,10 +1,15 @@
 package game;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.EmailFormatException;
 
-public abstract class Game implements GameInput{
+public abstract class Game implements GameInput, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3446432707327371462L; //직렬화 때 저장하여 역직렬화 시 동일한지 체크
 	protected GameKind kind = GameKind.RolePlaying;
 	protected String name;
 	protected int id;
