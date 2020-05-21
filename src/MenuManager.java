@@ -10,9 +10,9 @@ import log.EventLogger;
 
 public class MenuManager { 
 	static EventLogger logger = new EventLogger("log.txt"); //EventLogger클래스로 코드가 실행된 시간을 기록한다
-	
+
 	public static void main(String[] args) {
-		
+
 		Scanner input = new Scanner(System.in);
 		GameManager gameManager = getObject("gamemanager.ser"); //바이트 분해 후 스트림으로 보내는 직렬화
 		if(gameManager == null) {
@@ -72,19 +72,19 @@ public class MenuManager {
 		System.out.println("5. Exit"); //프로그램을 끈다.
 		System.out.println("Select one number between 1 - 5:"); //번호 5개 중 하나를 고르게 한다.
 	}
-	
+
 	public static GameManager getObject(String filename) {
 		GameManager gameManager = null;
-		
+
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
-			
+
 			gameManager = (GameManager) in.readObject(); //스트림에 있는 객체를 읽는다
-			
+
 			in.close();
 			file.close();
-			
+
 		} catch (FileNotFoundException e) {
 			return gameManager;
 		} catch (IOException e) {
@@ -94,20 +94,20 @@ public class MenuManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return gameManager;
 	}
-	
+
 	public static void putObject(GameManager gameManager, String filename) {
 		try {
 			FileOutputStream file = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(file);
-			
+
 			out.writeObject(gameManager); //스트림에 객체를 집어 넣는다
-			
+
 			out.close();
 			file.close();
-			
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

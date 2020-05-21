@@ -139,9 +139,9 @@ public class GameManager implements Serializable {
 		System.out.println("5. Exit"); //프로그램을 끈다.
 		System.out.println("Select one number between 1 - 5:"); //번호 5개 중 하나를 고르게 한다.
 	}
-	
-    public void setScanner(Scanner input) { //Scanner 메소드 추가
-        this.input = input;
-    }
+
+	public void setScanner(Scanner input) { //Scanner 메소드 추가
+		this.input = input;
+	}
 
 }
