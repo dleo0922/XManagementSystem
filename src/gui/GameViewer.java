@@ -1,13 +1,16 @@
 package gui;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class GameViewer extends JFrame{
+public class GameViewer extends JPanel{
+	WindowFrame frame;
+	public GameViewer(WindowFrame frame) {
+		this.frame = frame;
 
-	public GameViewer() {
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Id");
 		model.addColumn("Name");
@@ -18,9 +21,6 @@ public class GameViewer extends JFrame{
 		JScrollPane sp = new JScrollPane(table); //표로 만들어 스크롤 형식으로 붙임
 
 		this.add(sp);
-		this.setSize(300,300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true); //크기 설정 및 가시화
-	}
 
+	}
 }

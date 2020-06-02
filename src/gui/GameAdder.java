@@ -7,9 +7,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class GameAdder extends JFrame {
+public class GameAdder extends JPanel {
+	WindowFrame frame;
+	public GameAdder(WindowFrame frame) {
+		this.frame = frame;
 
-	public GameAdder() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout()); //SpringLayout 호출
 
@@ -42,9 +44,7 @@ public class GameAdder extends JFrame {
 
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		//SpringUtilities클래스에 든 메소드로 크기와 줄을 설정한다
-		this.setSize(300,300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setContentPane(panel);
+		this.add(panel);
 		this.setVisible(true);//크기 설정 후 가시화
 	}
 }
