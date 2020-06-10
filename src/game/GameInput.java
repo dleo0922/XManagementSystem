@@ -10,9 +10,15 @@ public interface GameInput {
 	
 	public void setId(int id);
 	
+	public String getName();
+	
 	public void setName(String name);
 	
+	public String getEmail();
+	
 	public void setEmail(String email) throws EmailFormatException;
+	
+	public String getPassword();
 	
 	public void setPassword(String password);
 

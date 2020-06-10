@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import game.Game;
 import game.GameInput;
 import game.GameKind;
 import game.HorrorGame;
@@ -131,11 +132,15 @@ public class GameManager implements Serializable {
 			games.get(i).printInfo(); //해당 Id의 모든 정보를 출력한다.
 		}
 	}
-	
+
 	public int size() {
 		return games.size();
 	}
-	
+
+	public GameInput get(int index) {
+		return (Game) games.get(index);
+	}
+
 	public void showEditMenu() {
 		System.out.println("** Steam Game Info Edit Menu **"); //메뉴를 소개한다.		
 		System.out.println("1. Edit Id"); //Id를 수정한다.

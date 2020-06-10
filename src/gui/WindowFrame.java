@@ -10,16 +10,16 @@ public class WindowFrame extends JFrame {
 	MenuSelection menuselection;
 	GameViewer gameviewer;
 	GameAdder gameAdder;
-	
+
 	public WindowFrame(GameManager gameManager) {
 		this.setSize(500,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		this.gameManager = gameManager;//생성자로 추가한다
 		menuselection = new MenuSelection(this);
 		gameviewer = new GameViewer(this, this.gameManager);
 		gameAdder = new GameAdder(this); 
-				
+
 		this.setupPanel(menuselection);
 		this.setVisible(true);//가시화
 	}
@@ -28,7 +28,7 @@ public class WindowFrame extends JFrame {
 		this.getContentPane().removeAll();
 		this.getContentPane().add(panel);
 		this.revalidate();
-		
+
 		this.repaint();
 	}
 	//getter과 setter로 접근한다
