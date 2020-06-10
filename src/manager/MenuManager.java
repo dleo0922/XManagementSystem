@@ -1,3 +1,4 @@
+package manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -6,6 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager { 
@@ -21,7 +24,7 @@ public class MenuManager {
 		else {
 			gameManager.setScanner(input);
 		}
-
+		WindowFrame frame = new WindowFrame(gameManager);
 		selectMenu(input, gameManager);
 		putObject(gameManager, "gamemanager.ser"); //스트림에 넣는다
 	}

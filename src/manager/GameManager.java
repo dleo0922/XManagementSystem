@@ -1,3 +1,4 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -130,6 +131,11 @@ public class GameManager implements Serializable {
 			games.get(i).printInfo(); //해당 Id의 모든 정보를 출력한다.
 		}
 	}
+	
+	public int size() {
+		return games.size();
+	}
+	
 	public void showEditMenu() {
 		System.out.println("** Steam Game Info Edit Menu **"); //메뉴를 소개한다.		
 		System.out.println("1. Edit Id"); //Id를 수정한다.

@@ -2,20 +2,24 @@ package gui;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import manager.GameManager;
 
 public class WindowFrame extends JFrame {
 	//객체 생성
+	GameManager gameManager;
 	MenuSelection menuselection;
 	GameViewer gameviewer;
 	GameAdder gameAdder;
-
-	public WindowFrame() {
-		this.menuselection = new MenuSelection(this);
-		this.gameviewer = new GameViewer(this);
-		this.gameAdder = new GameAdder(this); //생성자로 추가한다
-			
+	
+	public WindowFrame(GameManager gameManager) {
 		this.setSize(500,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		this.gameManager = gameManager;//생성자로 추가한다
+		menuselection = new MenuSelection(this);
+		gameviewer = new GameViewer(this, this.gameManager);
+		gameAdder = new GameAdder(this); 
+				
 		this.setupPanel(menuselection);
 		this.setVisible(true);//가시화
 	}
@@ -24,6 +28,7 @@ public class WindowFrame extends JFrame {
 		this.getContentPane().removeAll();
 		this.getContentPane().add(panel);
 		this.revalidate();
+		
 		this.repaint();
 	}
 	//getter과 setter로 접근한다

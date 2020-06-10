@@ -1,4 +1,6 @@
-/gui.class
-/MenuSelection.class
+/exception/
+/game/
 /gui/
 /listeners/
+/log/
+/manager/

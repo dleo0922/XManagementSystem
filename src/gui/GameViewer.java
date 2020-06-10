@@ -6,10 +6,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import manager.GameManager;
+
 public class GameViewer extends JPanel{
 	WindowFrame frame;
-	public GameViewer(WindowFrame frame) {
+	GameManager gameManager;
+	
+	public GameViewer(WindowFrame frame, GameManager gameManager) {
 		this.frame = frame;
+		this.gameManager = gameManager;
+		
+		System.out.println("***" + gameManager.size() + "***");
 
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Id");
